@@ -558,6 +558,12 @@
                     "enabled": false,
                     "interface": "your-connection-name",
                     "name": "wireguard"
+                },
+                {
+                    "displayName": "Cloudflare WARP",
+                    "enabled": false,
+                    "interface": "CloudflareWARP",
+                    "name": "warp"
                 }
             ]
         }
