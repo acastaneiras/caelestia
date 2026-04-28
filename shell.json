@@ -64,7 +64,7 @@
         },
         "clock": {
             "background": false,
-            "showDate": false,
+            "showDate": true,
             "showIcon": true
         },
         "dragThreshold": 20,
