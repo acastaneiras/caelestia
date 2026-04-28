@@ -539,7 +539,7 @@
         "toasts": {
             "audioInputChanged": true,
             "audioOutputChanged": true,
-            "capsLockChanged": true,
+            "capsLockChanged": false,
             "chargingChanged": true,
             "configLoaded": true,
             "dndChanged": true,
