@@ -561,7 +561,7 @@
                 },
                 {
                     "displayName": "Cloudflare WARP",
-                    "enabled": false,
+                    "enabled": true,
                     "interface": "CloudflareWARP",
                     "name": "warp"
                 }
