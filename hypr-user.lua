@@ -1,7 +1,7 @@
 ---@module 'hl'
 
 local terminal = "foot"
-local wsaction = "~/.config/hypr/scripts/wsaction.fish"
+local wsaction = os.getenv("HOME") .. "/.config/hypr/scripts/wsaction.fish"
 
 --## Monitors ###
 
@@ -26,10 +26,7 @@ hl.monitor({
 --## Window rules ###
 
 hl.window_rule({
-	name = "workspace_special",
-	match = {
-		match = "class org.keepassxc.KeePassXC",
-	},
+	match = { class = "org.keepassxc.KeePassXC" },
 	workspace = "special",
 })
 
@@ -38,7 +35,7 @@ hl.window_rule({
 hl.workspace_rule({
 	workspace = 1,
 	monitor = "DP-3",
-	is_default = true,
+	default = true,
 })
 
 hl.workspace_rule({
@@ -49,7 +46,7 @@ hl.workspace_rule({
 hl.workspace_rule({
 	workspace = 3,
 	monitor = "HDMI-A-1",
-	is_default = true,
+	default = true,
 })
 
 hl.workspace_rule({
@@ -64,7 +61,7 @@ hl.config({
 		sensitivity = 0.0000,
 		force_no_accel = true,
 		accel_profile = "flat",
-		kb_layout = { "eu", "es" },
+		kb_layout = "eu,es",
 		-- eu => eurkey
 		kb_options = "grp:alt_shift_toggle",
 	},
@@ -72,43 +69,43 @@ hl.config({
 
 -- No anims!!
 
-hl.animation({ leaf = "workspaces", enabled = false, speed = 1, bezier = "specialWorkSwitch", style = 0 })
+hl.animation({ leaf = "workspaces", enabled = false, speed = 1, bezier = "specialWorkSwitch", style = "none" })
 
 -- Binds
 
-hl.unbind("Super" .. " + " .. "C")
-
-hl.bind("Super" .. " + " .. "Return", hl.dsp.exec_cmd(terminal))
-
-hl.bind("Super" .. " + " .. "C", hl.dsp.window.close())
+hl.bind("SUPER + Return", hl.dsp.exec_cmd(terminal))
 
 -- Move window to workspace (Super+Shift+X)
 
-hl.bind("Super+Shift" .. " + " .. 1, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 1"))
+hl.bind("SUPER + SHIFT + " .. 1, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 1"))
 
-hl.bind("Super+Shift" .. " + " .. 2, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 2"))
+hl.bind("SUPER + SHIFT + " .. 2, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 2"))
 
-hl.bind("Super+Shift" .. " + " .. 3, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 3"))
+hl.bind("SUPER + SHIFT + " .. 3, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 3"))
 
-hl.bind("Super+Shift" .. " + " .. 4, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 4"))
+hl.bind("SUPER + SHIFT + " .. 4, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 4"))
 
-hl.bind("Super+Shift" .. " + " .. 5, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 5"))
+hl.bind("SUPER + SHIFT + " .. 5, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 5"))
 
-hl.bind("Super+Shift" .. " + " .. 6, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 6"))
+hl.bind("SUPER + SHIFT + " .. 6, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 6"))
 
-hl.bind("Super+Shift" .. " + " .. 7, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 7"))
+hl.bind("SUPER + SHIFT + " .. 7, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 7"))
 
-hl.bind("Super+Shift" .. " + " .. 8, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 8"))
+hl.bind("SUPER + SHIFT + " .. 8, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 8"))
 
-hl.bind("Super+Shift" .. " + " .. 9, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 9"))
+hl.bind("SUPER + SHIFT + " .. 9, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 9"))
 
-hl.bind("Super+Shift" .. " + " .. 0, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 10"))
+hl.bind("SUPER + SHIFT + " .. 0, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 10"))
 
 --## General config ###
 
 hl.config({
 	general = {
 		border_size = 2,
+		col = {
+			active_border = "rgb(8ad6b7)",
+			inactive_border = "rgba(8ad6b715)",
+		},
 	},
 })
 
@@ -149,10 +146,23 @@ hl.device({
 
 -- windowrule = sync_fullscreen on, match:class ^(steam_app_.*|lutris_game_class|minigalaxy|playnite_game_class|gamescope|chiaki|moonlight|com\.moonlight_stream\.Moonlight|.*[Ww]ine.*)$
 
+-- Browser
+hl.unbind("SUPER + W")
+hl.bind("SUPER + W", hl.dsp.exec_cmd("zen-browser"))
+
+-- GitHub Desktop
+hl.bind("SUPER + G", hl.dsp.exec_cmd("github-desktop"))
+
 -- Autostart
 hl.on("hyprland.start", function()
 	hl.exec_cmd("vesktop")
 	hl.exec_cmd("keepassxc")
 	hl.exec_cmd("gpu-screen-recorder")
 	hl.exec_cmd("otd-daemon")
+end)
+
+-- Fix cursor on reload (hyprland.start solo en first-start, no en hyprctl reload)
+hl.on("config.reloaded", function()
+	hl.exec_cmd("hyprctl setcursor Bibata-Modern-Classic 24")
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Classic")
 end)
