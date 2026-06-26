@@ -62,7 +62,7 @@ debug {
 }
 
 device {
-    name = opentabletdriver-virtual-artist-tablet 
+    name = opentabletdriver-virtual-artist-tablet
     output = DP-3
 }
 

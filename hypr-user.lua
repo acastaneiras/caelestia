@@ -1,7 +1,6 @@
 ---@module 'hl'
 
 local terminal = "foot"
-local wsaction = os.getenv("HOME") .. "/.config/hypr/scripts/wsaction.fish"
 
 --## Monitors ###
 
@@ -75,27 +74,13 @@ hl.animation({ leaf = "workspaces", enabled = false, speed = 1, bezier = "specia
 
 hl.bind("SUPER + Return", hl.dsp.exec_cmd(terminal))
 
--- Move window to workspace (Super+Shift+X)
-
-hl.bind("SUPER + SHIFT + " .. 1, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 1"))
-
-hl.bind("SUPER + SHIFT + " .. 2, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 2"))
-
-hl.bind("SUPER + SHIFT + " .. 3, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 3"))
-
-hl.bind("SUPER + SHIFT + " .. 4, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 4"))
-
-hl.bind("SUPER + SHIFT + " .. 5, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 5"))
-
-hl.bind("SUPER + SHIFT + " .. 6, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 6"))
-
-hl.bind("SUPER + SHIFT + " .. 7, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 7"))
-
-hl.bind("SUPER + SHIFT + " .. 8, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 8"))
-
-hl.bind("SUPER + SHIFT + " .. 9, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 9"))
-
-hl.bind("SUPER + SHIFT + " .. 0, hl.dsp.exec_cmd(wsaction .. " movetoworkspace 10"))
+-- Move window to workspace (Super+Shift+N)
+for i = 1, 10 do
+	local key = i % 10
+	hl.bind("SUPER + SHIFT + " .. key, function()
+		hl.dispatch(hl.dsp.window.move({ workspace = i }))
+	end)
+end
 
 --## General config ###
 
