@@ -45,7 +45,8 @@
             "enabled": false,
             "rounding": 1,
             "spacing": 1
-        }
+        },
+        "wallpaperEnabled": true
     },
     "bar": {
         "activeWindow": {
