@@ -111,7 +111,7 @@
             "workspaces": true
         },
         "showOnHover": true,
-        "status": {
+        "statusIcons": {
             "showAudio": true,
             "showBattery": false,
             "showBluetooth": false,
@@ -133,10 +133,12 @@
             "activeLabel": "󰮯",
             "activeTrail": false,
             "label": "  ",
+            "maxWindowIcons": 5,
             "occupiedBg": false,
             "occupiedLabel": "󰮯",
             "perMonitorWorkspaces": true,
             "showWindows": true,
+            "showWindowsOnSpecialWorkspaces": true,
             "shown": 5,
             "specialWorkspaceIcons": [
                 {
@@ -545,17 +547,18 @@
             "provider": [
                 {
                     "displayName": "Wireguard (Your VPN)",
-                    "enabled": false,
+                    "id": "vpn-mt4cr54t-2ew52",
                     "interface": "your-connection-name",
                     "name": "wireguard"
                 },
                 {
                     "displayName": "Cloudflare WARP",
-                    "enabled": true,
+                    "id": "vpn-mt4cr54t-4qqib",
                     "interface": "CloudflareWARP",
                     "name": "warp"
                 }
-            ]
+            ],
+            "selectedProvider": "vpn-mt4cr54t-4qqib"
         }
     }
 }
