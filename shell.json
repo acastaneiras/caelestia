@@ -543,12 +543,12 @@
             "vpnChanged": true
         },
         "vpn": {
-            "enabled": true,
+            "enabled": false,
             "provider": [
                 {
                     "displayName": "Wireguard (Your VPN)",
                     "id": "vpn-mt4cr54t-2ew52",
-                    "interface": "your-connection-name",
+                    "interface": "wg0",
                     "name": "wireguard"
                 },
                 {
@@ -558,7 +558,7 @@
                     "name": "warp"
                 }
             ],
-            "selectedProvider": "vpn-mt4cr54t-4qqib"
+            "selectedProvider": "vpn-mt4cr54t-2ew52"
         }
     }
 }
