@@ -111,16 +111,36 @@
             "workspaces": true
         },
         "showOnHover": true,
-        "statusIcons": {
-            "showAudio": true,
-            "showBattery": false,
-            "showBluetooth": false,
-            "showKbLayout": true,
-            "showLockStatus": true,
-            "showMicrophone": true,
-            "showNetwork": true,
-            "showWifi": false
-        },
+        "statusIcons": [
+            {
+                "enabled": true,
+                "id": "lockStatus"
+            },
+            {
+                "enabled": true,
+                "id": "audio"
+            },
+            {
+                "enabled": true,
+                "id": "microphone"
+            },
+            {
+                "enabled": true,
+                "id": "kbLayout"
+            },
+            {
+                "enabled": true,
+                "id": "network"
+            },
+            {
+                "enabled": false,
+                "id": "bluetooth"
+            },
+            {
+                "enabled": false,
+                "id": "battery"
+            }
+        ],
         "tray": {
             "background": false,
             "compact": false,
@@ -132,11 +152,12 @@
             "activeIndicator": true,
             "activeLabel": "󰮯",
             "activeTrail": false,
+            "displayType": "Text",
             "label": "  ",
             "maxWindowIcons": 5,
             "occupiedBg": false,
             "occupiedLabel": "󰮯",
-            "perMonitorWorkspaces": true,
+            "perMonitor": true,
             "showWindows": true,
             "showWindowsOnSpecialWorkspaces": true,
             "shown": 5,
@@ -445,8 +466,9 @@
     "services": {
         "audioIncrement": 0.1,
         "brightnessIncrement": 0.1,
+        "clockFormat": "TwentyFourHour",
         "defaultPlayer": "Spotify",
-        "gpuType": "",
+        "gpuType": "Nvidia",
         "maxVolume": 1,
         "playerAliases": [
             {
@@ -454,12 +476,11 @@
                 "to": "YT Music"
             }
         ],
+        "sensorUnits": "Celsius",
         "smartScheme": true,
-        "useFahrenheit": false,
-        "useFahrenheitPerformance": false,
-        "useTwelveHourClock": false,
         "visualiserBars": 45,
-        "weatherLocation": ""
+        "weatherLocation": "",
+        "weatherUnits": "Celsius"
     },
     "session": {
         "commands": {
@@ -558,7 +579,7 @@
                     "name": "warp"
                 }
             ],
-            "selectedProvider": "vpn-mt4cr54t-2ew52"
+            "selectedProvider": "vpn-mt4cr54t-4qqib"
         }
     }
 }

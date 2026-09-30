@@ -86,6 +86,7 @@ end
 
 hl.config({
     general = {
+        allow_tearing = true,
         border_size = 2,
         col = {
             active_border = "rgb(8ad6b7)",
@@ -111,6 +112,13 @@ hl.config({
 hl.device({
     name = "opentabletdriver-virtual-artist-tablet",
     output = "DP-3",
+})
+
+-- Render --
+hl.config({
+    render = {
+        direct_scanout = 2,
+    },
 })
 
 --## Gaming ###
